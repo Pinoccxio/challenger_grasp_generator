@@ -1,0 +1,27 @@
+<launch>
+  <!-- 选择运行Python或C++版本 -->
+  <arg name="use_python" default="false" />
+
+  <!-- 参数服务器加载配置 -->
+  <rosparam command="load" file="$(find grasp_generator)/config/params.yaml" />
+
+  <!-- Python版本 -->
+  <group if="$(arg use_python)">
+    <node name="grasp_generator_py" pkg="grasp_generator"
+          type="grasp_generator_node.py" output="screen">
+      <param name="gripper_min" value="0.02" />
+      <param name="gripper_max" value="0.08" />
+      <param name="safety_margin" value="0.01" />
+    </node>
+  </group>
+
+  <!-- C++版本 -->
+  <group unless="$(arg use_python)">
+    <node name="grasp_generator_cpp" pkg="grasp_generator"
+          type="grasp_generator_node" output="screen">
+      <param name="gripper_min" value="0.02" />
+      <param name="gripper_max" value="0.08" />
+      <param name="safety_margin" value="0.01" />
+    </node>
+  </group>
+</launch>

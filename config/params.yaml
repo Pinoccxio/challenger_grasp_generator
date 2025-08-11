@@ -1,0 +1,7 @@
+# 抓取参数配置
+grasp_params:
+  gripper_min: 0.02    # 最小抓取宽度 (m)
+  gripper_max: 0.08    # 最大抓取宽度 (m)
+  safety_margin: 0.01  # 安全高度 (m)
+  grasp_offset: 0.005  # 抓取深度偏移 (m)
+  stability_threshold: 0.3  # 稳定性分数阈值

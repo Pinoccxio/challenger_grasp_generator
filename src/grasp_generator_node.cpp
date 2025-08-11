@@ -16,6 +16,7 @@
 #include <opencv2/opencv.hpp>
 #include <algorithm>
 #include <vector>
+#include <image_transport/image_transport.h>
 
 using namespace Eigen;
 

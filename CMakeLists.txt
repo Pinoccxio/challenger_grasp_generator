@@ -14,6 +14,7 @@ find_package(catkin REQUIRED COMPONENTS
   sensor_msgs
   std_msgs
   message_generation
+  image_transport
 )
 
 ## System dependencies are found with CMake's conventions
@@ -125,13 +126,11 @@ include_directories(
 ## as an example, code may need to be generated before libraries
 ## either from message generation or dynamic reconfigure
 # add_dependencies(${PROJECT_NAME} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-add_dependencies(grasp_generator_node ${PROJECT_NAME}_generate_messages_cpp)
 
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/grasp_generator_node.cpp)
-add_executable(grasp_generator_node src/grasp_generator_node.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -147,6 +146,8 @@ add_executable(grasp_generator_node src/grasp_generator_node.cpp)
 # target_link_libraries(${PROJECT_NAME}_node
 #   ${catkin_LIBRARIES}
 # )
+add_executable(grasp_generator_node src/grasp_generator_node.cpp)
+add_dependencies(grasp_generator_node ${PROJECT_NAME}_generate_messages_cpp)
 target_link_libraries(grasp_generator_node ${catkin_LIBRARIES})
 
 #############
